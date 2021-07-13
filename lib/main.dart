@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
@@ -99,15 +99,15 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+              textAlign:TextAlign.center ,
             ),
-            Image(
-                image: NetworkImage(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-                isAntiAlias: true,
-                height: 120,
-                width: 120,
-
-
+            ListView(
+                scrollDirection:Axis.vertical,
+              children: <Widget>[
+                ProductItem(),
+                ProductItem(),
+                ProductItem(),
+              ],
             ),
 
           ],
@@ -116,8 +116,30 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.add,color: Color(0xffdddddd),),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class ProductItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    // throw UnimplementedError();
+    return Column(
+      children: <Widget>[
+        Text(
+          '我是标题',
+        ),
+        Image(
+          image: NetworkImage(
+              'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+          isAntiAlias: true,
+          height: 200,
+          width: 200,
+        ),
+      ],
     );
   }
 }
